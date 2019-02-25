@@ -5,19 +5,41 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/colorSuslik">
 
+    <TextView
+        android:id="@+id/tv_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/app_name"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="30dp"
+        android:textSize="36dp"
+        android:textAlignment="textEnd"
+        android:gravity="end"
+        android:layout_marginRight="30dp" />
+
     <LinearLayout
         android:id="@+id/Base"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_marginTop="70dp"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
-
         android:layout_marginBottom="100dp"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/tv_resultat"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/app_name"
+            app:layout_constraintLeft_toRightOf="@+id/tv_time"
+            />
 
         <LinearLayout
             android:id="@+id/LL1"
@@ -33,7 +55,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:scaleType="fitEnd"
-                android:src="@drawable/in" />
+                android:src="@drawable/in"/>
 
             <ImageView
                 android:id="@+id/topcenter"
@@ -41,7 +63,8 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:scaleType="fitEnd"
-                android:src="@drawable/in" />
+                android:src="@drawable/in"
+                />
 
             <ImageView
                 android:id="@+id/topright"
@@ -66,7 +89,8 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:scaleType="fitEnd"
-                android:src="@drawable/in" />
+                android:src="@drawable/in"
+                />
 
             <ImageView
                 android:id="@+id/centerCenter"
@@ -74,7 +98,8 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:scaleType="fitEnd"
-                android:src="@drawable/in" />
+                android:src="@drawable/in"
+                />
 
             <ImageView
                 android:id="@+id/centerRight"
@@ -82,7 +107,8 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:scaleType="fitEnd"
-                android:src="@drawable/in" />
+                android:src="@drawable/in"
+                />
         </LinearLayout>
 
         <LinearLayout
@@ -98,7 +124,8 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:scaleType="fitEnd"
-                android:src="@drawable/in" />
+                android:src="@drawable/in"
+                />
 
             <ImageView
                 android:id="@+id/bottomCenter"
@@ -106,7 +133,8 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:scaleType="fitEnd"
-                android:src="@drawable/in" />
+                android:src="@drawable/in"
+                />
 
             <ImageView
                 android:id="@+id/bottomRight"
@@ -114,7 +142,8 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:scaleType="fitEnd"
-                android:src="@drawable/in" />
+                android:src="@drawable/in"
+                />
         </LinearLayout>
 
     </LinearLayout>
