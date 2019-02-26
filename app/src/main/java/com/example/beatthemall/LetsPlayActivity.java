@@ -1,18 +1,16 @@
 package com.example.beatthemall;
 
 import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
-import android.media.AudioManager;
-import android.media.SoundPool;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
 
-public class SetPlayerNumberActivity extends Activity {
+public class LetsPlayActivity extends Activity {
 
+    int exit=0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,12 +28,31 @@ public class SetPlayerNumberActivity extends Activity {
         one.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                Intent intnet_one = new Intent(SetPlayerNumberActivity.this, OnePlayerActivity.class);
-                SetPlayerNumberActivity.this.startActivity(intnet_one);
+                exit=1;
+                Intent intnet_one = new Intent(LetsPlayActivity.this, ChipmunksActivity.class);
+                LetsPlayActivity.this.startActivity(intnet_one);
             }
         });
     }
+
+    @Override
+    protected void onPause() {
+        if (exit==0) {
+            stopService(new Intent(this, BackGroundMusicActivity.class));
+            finish();
+        } super.onPause();
+
+    }
+
+    @Override
+    protected void onUserLeaveHint() {
+        if (exit==0) {
+            stopService(new Intent(this, BackGroundMusicActivity.class));
+            finish();
+        } super.onUserLeaveHint();
+
+    }
+
     public void onBackPressed(){
         stopService(new Intent(this, BackGroundMusicActivity.class));
         finish();
