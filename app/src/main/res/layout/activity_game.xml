@@ -5,23 +5,18 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/colorSuslik">
-
     <TextView
         android:id="@+id/tv_resultat"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/app_name"
-        android:textSize="36dp"
+        android:textSize="36sp"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginLeft="30dp"
+        android:layout_marginStart="30dp"
         android:layout_marginTop="15dp"
-        android:gravity="left"
-
-        />
-
-
-
+        android:gravity="start"
+        android:layout_marginLeft="30dp" />
     <TextView
         android:id="@+id/tv_time"
         android:layout_width="wrap_content"
@@ -31,11 +26,23 @@
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginTop="15dp"
         android:layout_marginEnd="30dp"
-        android:textSize="36dp"
+        android:textSize="36sp"
         android:textAlignment="textEnd"
         android:gravity="end"
-        android:layout_marginRight="30dp" />
-
+        android:layout_marginRight="30dp"
+        />
+    <TextView
+        android:id="@+id/tv_bouns"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=" "
+        android:textSize="36sp"
+        android:gravity="center"
+        android:layout_marginBottom="15dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        />
     <LinearLayout
         android:id="@+id/Base"
         android:layout_width="match_parent"
@@ -45,7 +52,6 @@
         android:layout_marginRight="20dp"
         android:layout_marginBottom="100dp"
         android:orientation="vertical"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -64,7 +70,9 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:scaleType="fitEnd"
-                android:src="@drawable/in"/>
+                android:src="@drawable/in"
+                android:contentDescription="TODO"
+                tools:ignore="NestedWeights" />
 
             <ImageView
                 android:id="@+id/topcenter"
@@ -73,7 +81,7 @@
                 android:layout_weight="1"
                 android:scaleType="fitEnd"
                 android:src="@drawable/in"
-                />
+                android:contentDescription="TODO" />
 
             <ImageView
                 android:id="@+id/topright"
@@ -81,7 +89,8 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:scaleType="fitEnd"
-                android:src="@drawable/in" />
+                android:src="@drawable/in"
+                android:contentDescription="TODO" />
 
         </LinearLayout>
 
@@ -99,7 +108,8 @@
                 android:layout_weight="1"
                 android:scaleType="fitEnd"
                 android:src="@drawable/in"
-                />
+                android:contentDescription="TODO"
+                tools:ignore="NestedWeights" />
 
             <ImageView
                 android:id="@+id/centerCenter"
@@ -108,7 +118,7 @@
                 android:layout_weight="1"
                 android:scaleType="fitEnd"
                 android:src="@drawable/in"
-                />
+                android:contentDescription="TODO" />
 
             <ImageView
                 android:id="@+id/centerRight"
@@ -117,7 +127,7 @@
                 android:layout_weight="1"
                 android:scaleType="fitEnd"
                 android:src="@drawable/in"
-                />
+                android:contentDescription="TODO" />
         </LinearLayout>
 
         <LinearLayout
@@ -134,7 +144,8 @@
                 android:layout_weight="1"
                 android:scaleType="fitEnd"
                 android:src="@drawable/in"
-                />
+                android:contentDescription="TODO"
+                tools:ignore="NestedWeights" />
 
             <ImageView
                 android:id="@+id/bottomCenter"
@@ -143,7 +154,7 @@
                 android:layout_weight="1"
                 android:scaleType="fitEnd"
                 android:src="@drawable/in"
-                />
+                android:contentDescription="TODO" />
 
             <ImageView
                 android:id="@+id/bottomRight"
@@ -152,22 +163,7 @@
                 android:layout_weight="1"
                 android:scaleType="fitEnd"
                 android:src="@drawable/in"
-                />
+                android:contentDescription="TODO" />
         </LinearLayout>
-
     </LinearLayout>
-
-    <TextView
-        android:id="@+id/tv_bouns"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/app_name"
-        android:textSize="36dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        android:gravity="left"
-
-        />
-
 </android.support.constraint.ConstraintLayout>

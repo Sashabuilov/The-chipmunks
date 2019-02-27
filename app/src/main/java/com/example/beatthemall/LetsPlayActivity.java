@@ -10,13 +10,13 @@ import android.widget.Button;
 
 public class LetsPlayActivity extends Activity {
 
-    int exit=0;
+    int exit = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        startService(new Intent(this,BackGroundMusicActivity.class));
+        startService(new Intent(this, BackGroundMusicActivity.class));
 
 
         requestWindowFeature(Window.FEATURE_NO_TITLE);
@@ -28,7 +28,7 @@ public class LetsPlayActivity extends Activity {
         one.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                exit=1;
+                exit = 1;
                 Intent intnet_one = new Intent(LetsPlayActivity.this, ChipmunksActivity.class);
                 LetsPlayActivity.this.startActivity(intnet_one);
             }
@@ -37,23 +37,25 @@ public class LetsPlayActivity extends Activity {
 
     @Override
     protected void onPause() {
-        if (exit==0) {
+        if (exit == 0) {
             stopService(new Intent(this, BackGroundMusicActivity.class));
             finish();
-        } super.onPause();
+        }
+        super.onPause();
 
     }
 
     @Override
     protected void onUserLeaveHint() {
-        if (exit==0) {
+        if (exit == 0) {
             stopService(new Intent(this, BackGroundMusicActivity.class));
             finish();
-        } super.onUserLeaveHint();
+        }
+        super.onUserLeaveHint();
 
     }
 
-    public void onBackPressed(){
+    public void onBackPressed() {
         stopService(new Intent(this, BackGroundMusicActivity.class));
         finish();
     }
