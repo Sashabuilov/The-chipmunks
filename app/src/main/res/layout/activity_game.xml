@@ -31,35 +31,62 @@
         android:gravity="end"
         android:layout_marginRight="30dp"
         />
-    <TextView
-        android:id="@+id/tv_bouns"
+
+    <Button
+        android:id="@+id/btn_newGame"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text=" "
-        android:textSize="36sp"
-        android:gravity="center"
         android:layout_marginBottom="15dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:text="@string/newgame"
         app:layout_constraintBottom_toBottomOf="parent"
-        />
+        app:layout_constraintLeft_toRightOf="@id/btn_about"
+        app:layout_constraintRight_toLeftOf="@id/btn_Settings"
+
+         />
+
+    <Button
+        android:id="@+id/btn_about"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="15dp"
+        android:text="@string/about"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginLeft="15dp"
+        android:layout_marginStart="15dp" />
+
+    <Button
+        android:id="@+id/btn_Settings"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="15dp"
+        android:layout_marginBottom="15dp"
+        android:text="@string/settings"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginRight="15dp" />
+
+
+
+
     <LinearLayout
         android:id="@+id/Base"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="70dp"
+        android:layout_height="0dp"
         android:layout_marginLeft="20dp"
+        android:layout_marginTop="15dp"
         android:layout_marginRight="20dp"
-        android:layout_marginBottom="100dp"
+        android:layout_marginBottom="50dp"
         android:orientation="vertical"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/btn_newGame"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
         <LinearLayout
             android:id="@+id/LL1"
-            android:layout_height="0dp"
             android:layout_width="match_parent"
+            android:layout_height="0dp"
             android:layout_weight="1"
             android:gravity="bottom">
 
@@ -69,9 +96,9 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:contentDescription="TODO"
                 android:scaleType="fitEnd"
                 android:src="@drawable/in"
-                android:contentDescription="TODO"
                 tools:ignore="NestedWeights" />
 
             <ImageView
@@ -79,25 +106,25 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:contentDescription="TODO"
                 android:scaleType="fitEnd"
-                android:src="@drawable/in"
-                android:contentDescription="TODO" />
+                android:src="@drawable/in" />
 
             <ImageView
                 android:id="@+id/topright"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:contentDescription="TODO"
                 android:scaleType="fitEnd"
-                android:src="@drawable/in"
-                android:contentDescription="TODO" />
+                android:src="@drawable/in" />
 
         </LinearLayout>
 
         <LinearLayout
             android:id="@+id/LL2"
-            android:layout_height="0dp"
             android:layout_width="match_parent"
+            android:layout_height="0dp"
             android:layout_weight="1"
             android:gravity="bottom">
 
@@ -106,9 +133,9 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:contentDescription="TODO"
                 android:scaleType="fitEnd"
                 android:src="@drawable/in"
-                android:contentDescription="TODO"
                 tools:ignore="NestedWeights" />
 
             <ImageView
@@ -116,24 +143,24 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:contentDescription="TODO"
                 android:scaleType="fitEnd"
-                android:src="@drawable/in"
-                android:contentDescription="TODO" />
+                android:src="@drawable/in" />
 
             <ImageView
                 android:id="@+id/centerRight"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:contentDescription="TODO"
                 android:scaleType="fitEnd"
-                android:src="@drawable/in"
-                android:contentDescription="TODO" />
+                android:src="@drawable/in" />
         </LinearLayout>
 
         <LinearLayout
             android:id="@+id/LL3"
-            android:layout_height="0dp"
             android:layout_width="match_parent"
+            android:layout_height="0dp"
             android:layout_weight="1"
             android:gravity="bottom">
 
@@ -142,9 +169,9 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:contentDescription="TODO"
                 android:scaleType="fitEnd"
                 android:src="@drawable/in"
-                android:contentDescription="TODO"
                 tools:ignore="NestedWeights" />
 
             <ImageView
@@ -152,18 +179,18 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:contentDescription="TODO"
                 android:scaleType="fitEnd"
-                android:src="@drawable/in"
-                android:contentDescription="TODO" />
+                android:src="@drawable/in" />
 
             <ImageView
                 android:id="@+id/bottomRight"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:contentDescription="TODO"
                 android:scaleType="fitEnd"
-                android:src="@drawable/in"
-                android:contentDescription="TODO" />
+                android:src="@drawable/in" />
         </LinearLayout>
     </LinearLayout>
 </android.support.constraint.ConstraintLayout>
