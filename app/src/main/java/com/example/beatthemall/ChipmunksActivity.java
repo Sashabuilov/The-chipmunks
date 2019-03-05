@@ -11,52 +11,60 @@ import android.media.SoundPool;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.CountDownTimer;
+import android.os.Handler;
 import android.support.annotation.DrawableRes;
 import android.support.annotation.RequiresApi;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import java.util.Random;
 import java.util.Timer;
 import java.util.TimerTask;
+import java.util.concurrent.TimeUnit;
+
+import android.content.SharedPreferences;
 
 public class ChipmunksActivity extends Activity {
 
-//Описание переменных
+    //Описание переменных
+
     Random random = new Random();
     ImageView[] imagesArray;
+    ImageView[] imagesArray_2;
     TextView gameTime, tv_result;
-    int out_champ_number;
-    Timer timerChipMunks;
+    int out_champ_number,out_champ_numbertwo;
     int resultat = 0;
     int bonus_count = 10;
     int bouns_countX = bonus_count;
-    long timerSeconds = 5000;
     int out_chipmunks_speed = 1000;
+    long timerSeconds = 30000;
+    long timerSecondsToRestart=timerSeconds;
+    Timer timerChipMunks;
     CountDownTimer basicTimer;
 
-    //sounds
+    //Переменные звуков
     private SoundPool mSoundPool;
-    //private SoundPool back_music;
     private int mSoundId = 1;
     private int mStreamId;
 
-    //Диалоги
+    //Переменные диалогов
     DialogFragment about_dialog;
-    DialogFragment settings_dialog;
+    Dialog_Settings settings_dialog;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game);
 
+        AppSession.getInstance().prepareAppSessionForActivity(this);
+
+        //диалоги
         about_dialog = new Dialog_About();
         settings_dialog = new Dialog_Settings();
-
-
-        startService(new Intent(this, BackGroundMusicActivity.class));
+        //работа зо звуками
         mSoundPool = new SoundPool(1, AudioManager.STREAM_MUSIC, 100);
         mSoundPool.load(this, R.raw.scratch, 1);
         gameTime = findViewById(R.id.tv_time);
@@ -74,11 +82,22 @@ public class ChipmunksActivity extends Activity {
         imagesArray[6] = findViewById(R.id.bottomLeft);
         imagesArray[7] = findViewById(R.id.bottomCenter);
         imagesArray[8] = findViewById(R.id.bottomRight);
+        imagesArray_2 = new ImageView[9];
+        imagesArray_2[0] = findViewById(R.id.topleft);
+        imagesArray_2[1] = findViewById(R.id.topcenter);
+        imagesArray_2[2] = findViewById(R.id.topright);
+        imagesArray_2[3] = findViewById(R.id.centerLeft);
+        imagesArray_2[4] = findViewById(R.id.centerCenter);
+        imagesArray_2[5] = findViewById(R.id.centerRight);
+        imagesArray_2[6] = findViewById(R.id.bottomLeft);
+        imagesArray_2[7] = findViewById(R.id.bottomCenter);
+        imagesArray_2[8] = findViewById(R.id.bottomRight);
+
         Button btnNewGame = findViewById(R.id.btn_newGame);
         Button btnAbout = findViewById(R.id.btn_about);
         Button btnSettings=findViewById(R.id.btn_Settings);
         
-//Кнопка AboutUS
+        //Кнопка AboutUS
         btnAbout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -86,14 +105,15 @@ public class ChipmunksActivity extends Activity {
             }
         });
         
-//Кнопка Settings
+        //Кнопка Settings
         btnSettings.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 settings_dialog.show(getFragmentManager(), "dlg2");
             }
         });
-// кнопка новая игра
+
+        // кнопка новая игра
         btnNewGame.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -104,8 +124,8 @@ public class ChipmunksActivity extends Activity {
                 }
             }
         });
+
     }
-    
     //Основной таймер
     public void startBasicTimer(long time) {
         basicTimer = new CountDownTimer(time, 1000) {
@@ -154,32 +174,76 @@ public class ChipmunksActivity extends Activity {
     //Основное тело игры + перезапуск таймера после его остановки в timerTask
     public void gameBody() {
         int r = random.nextInt((9));
+        int r2 = random.nextInt((9));
         out_champ_number = r;
+        out_champ_numbertwo = r2;
         all_in();
         change_to_out(imagesArray[r]);
-        press_to_image(r);
+        change_to_out2(imagesArray_2[r2]);
+        press_to_image(r,r2);
         startTimer();
     }
     //обработчик нажатия на кнопки/картинки
-    public void press_to_image(final int x) {
+    public void press_to_image(final int x, final int x2) {
         imagesArray[x].setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (out_champ_number == x) {
+                    change_to_hit(imagesArray[out_champ_number]);
                     sound_scrach();
-                    bonus_count = bonus_count - 1;
-                    if (bonus_count == 0) {
-                        bonus_count = bouns_countX;
-                        basicTimer.cancel();
-                        timerChipMunks.cancel();
-                        startTimer();
-                        setNewTime(timerSeconds);
-                        out_chipmunks_speed = out_chipmunks_speed - 50;
-                        startBasicTimer(setNewTime(timerSeconds));
-                    } else
-                    //подсчет результата нажатия на хомячков
-                    tv_result.setText((Integer.toString(resultat = resultat + 1)));
-                    all_in();
+                    Handler handler=new Handler();
+                    handler.postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            bonus_count = bonus_count - 1;
+                            if (bonus_count == 0) {
+                                bonus_count = bouns_countX;
+                                basicTimer.cancel();
+                                timerChipMunks.cancel();
+                                startTimer();
+                                setNewTime(timerSeconds);
+                                out_chipmunks_speed = out_chipmunks_speed - 10;
+                                startBasicTimer(setNewTime(timerSeconds));
+                            } else
+                                change_to_hit(imagesArray[x]);
+                            //подсчет результата нажатия на хомячков
+                            tv_result.setText((Integer.toString(resultat = resultat + 1)));
+                            all_in();
+                        }
+                    }, 2000);
+                   // forcePause();
+
+                }
+            }
+        });
+
+        imagesArray_2[x2].setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (out_champ_numbertwo == x2) {
+                    change_to_hit(imagesArray_2[out_champ_numbertwo]);
+                    sound_scrach();
+                    Handler handler2=new Handler();
+                    handler2.postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            bonus_count = bonus_count - 1;
+                            if (bonus_count == 0) {
+                                bonus_count = bouns_countX;
+                                basicTimer.cancel();
+                                timerChipMunks.cancel();
+                                startTimer();
+                                setNewTime(timerSeconds);
+                                out_chipmunks_speed = out_chipmunks_speed - 20;
+                                startBasicTimer(setNewTime(timerSeconds));
+                            } else
+                                change_to_hit(imagesArray_2[x2]);
+                            //подсчет результата нажатия на хомячков
+                            tv_result.setText((Integer.toString(resultat = resultat + 1)));
+                            all_in();
+                        }
+                    }, 2000);
+
                 }
             }
         });
@@ -199,6 +263,7 @@ public class ChipmunksActivity extends Activity {
         int priority = 1;
         int no_loop = 0;
         float normal_playback_rate = 1f;
+
         mStreamId = mSoundPool.play(mSoundId, leftVolume, rightVolume, priority, no_loop,
                 normal_playback_rate);
     }
@@ -206,6 +271,7 @@ public class ChipmunksActivity extends Activity {
     public void all_in() {
         for (int i = 0; i < 9; i++) {
             change_to_in(imagesArray[i]);
+            change_to_in(imagesArray_2[i]);
         }
     }
     //обращение к ресурсу картинок
@@ -220,10 +286,17 @@ public class ChipmunksActivity extends Activity {
     public void change_to_out(ImageView imageView) {
         img_change(imageView, R.drawable.out);
     }
+    public void change_to_out2(ImageView imageView) {
+        img_change(imageView, R.drawable.out);
+    }
+    public void change_to_hit(ImageView imageView){
+        img_change(imageView, R.drawable.hit_champs);
+    }
     // Обработчик выхода по кнопке home
     @Override
     protected void onUserLeaveHint() {
-        stopService(new Intent(this, BackGroundMusicActivity.class));
+//        AppSession.getInstance().stopPlayMusic();
+
         finish();
         super.onUserLeaveHint();
     }
@@ -263,7 +336,10 @@ public class ChipmunksActivity extends Activity {
                     @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
                     @Override
                     public void onClick(DialogInterface arg0, int arg1) {
-                        restartAvtivity();
+                        startTimer();
+                        startBasicTimer(timerSecondsToRestart);
+
+                        //restartAvtivity();
                     }
                 }).create().show();
     }
@@ -273,13 +349,14 @@ public class ChipmunksActivity extends Activity {
         startActivity(restartIntent);
 
     }
-    public void mute_background_music(){
-        stopService(new Intent(this, BackGroundMusicActivity.class));
+    @Override
+    protected void onPause() {
+        super.onPause();
+        AppSession.getInstance().stopPlayMusic();
+    }
+    @Override
+    protected void onResume() {
+        super.onResume();
+        AppSession.getInstance().refreshPlayMusic();
     }
 }
-
-
-
-
-
-

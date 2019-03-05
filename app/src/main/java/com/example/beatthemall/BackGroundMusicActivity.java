@@ -15,7 +15,7 @@ public class BackGroundMusicActivity extends Service {
     }
     @Override
     public void onCreate() {
-        player = MediaPlayer.create(this, R.raw.freemusic_back1);
+        player = MediaPlayer.create(this, R.raw.music);
         player.setLooping(true); // зацикливаем
     }
     @Override

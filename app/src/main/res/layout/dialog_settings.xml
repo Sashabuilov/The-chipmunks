@@ -1,21 +1,61 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="wrap_content"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="horizontal">
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <ImageView
+        android:id="@+id/dust"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:src="@drawable/dust"
+        android:layout_marginTop="260dp"
+        android:layout_marginLeft="36.5dp"
+        android:layout_marginRight="36.5dp"
+        android:layout_marginBottom="136dp"
+        />
+
+    <Button
+        android:id="@+id/ok_settings"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="ОК"
+        app:layout_constraintRight_toRightOf="@+id/dust"
+        app:layout_constraintBottom_toBottomOf="@+id/dust"
+        android:layout_marginRight="20dp"
+        android:layout_marginBottom="20dp"
+        />
+
+    <CheckBox
+
+        android:id="@+id/cb_mute_sound"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Звуки"
+        android:layout_marginLeft="20dp"
+        app:layout_constraintTop_toTopOf="@id/dust"
+        app:layout_constraintBottom_toBottomOf="@id/cb_background_music"
+        app:layout_constraintLeft_toLeftOf="@+id/dust"
+        />
 
     <CheckBox
         android:id="@+id/cb_background_music"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:src="@drawable/in"
         android:text="Фоновая музыка"
-        android:checked="true"
-        />
-    <Button
-        android:id="@+id/ok_settings"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="OK"
-        />
-</LinearLayout>
+
+        android:layout_marginTop="30dp"
+        android:layout_marginLeft="20dp"
+
+
+        app:layout_constraintTop_toTopOf="@id/dust"
+        app:layout_constraintBottom_toTopOf="@id/ok_settings"
+        app:layout_constraintLeft_toLeftOf="@+id/dust"/>
+
+</android.support.constraint.ConstraintLayout>
