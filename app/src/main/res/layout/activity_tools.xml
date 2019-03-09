@@ -1,0 +1,271 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#8FDBF1">
+
+    <TextView
+        android:id="@+id/tv_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="30dp"
+        android:layout_marginRight="30dp"
+        android:gravity="end"
+        android:text="@string/app_name"
+        android:textAlignment="textEnd"
+        android:textSize="36sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="0" />
+
+    <ImageView
+
+        android:id="@+id/iv_grass"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:adjustViewBounds="true"
+        android:cropToPadding="false"
+        android:src="@drawable/grass"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent" />
+
+
+    <ImageView
+        android:id="@+id/iv_dust"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginBottom="10dp"
+        android:adjustViewBounds="true"
+        android:cropToPadding="false"
+        android:src="@drawable/dust"
+        app:layout_constraintBottom_toTopOf="@+id/RLBase"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/iv_grass" />
+
+    <ImageView
+        android:id="@+id/zabor"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:adjustViewBounds="true"
+        android:src="@drawable/zabor"
+        android:layout_marginBottom="20dp"
+        app:layout_constraintBottom_toTopOf="@+id/Base"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        />
+
+    <ImageView
+
+        android:id="@+id/gamecount"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="20dp"
+        android:layout_marginLeft="30dp"
+        android:adjustViewBounds="true"
+        android:cropToPadding="false"
+        android:scaleType="fitStart"
+        android:src="@drawable/scoretble"
+        app:layout_constraintBottom_toBottomOf="@id/zabor"
+        app:layout_constraintLeft_toLeftOf="@id/zabor"
+        app:layout_constraintTop_toTopOf="@id/zabor" />
+
+    <TextView
+        android:id="@+id/tv_resultat"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="start"
+        android:text="@string/app_name"
+        android:textSize="36sp"
+        android:layout_marginBottom="15dp"
+        app:layout_constraintBottom_toBottomOf="@+id/gamecount"
+        app:layout_constraintEnd_toEndOf="@+id/gamecount"
+        app:layout_constraintStart_toStartOf="@+id/gamecount"
+        app:layout_constraintTop_toTopOf="@+id/gamecount"
+        tools:text="0" />
+
+    <RelativeLayout
+        android:id="@+id/RLBase"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginBottom="10dp"
+        >
+        <Button
+            android:id="@+id/btn_about"
+            android:layout_width="70dp"
+            android:layout_height="100dp"
+            android:background="@drawable/table1"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="25dp"
+            />
+        <Button
+            android:id="@+id/btn_newGame"
+            android:layout_width="178dp"
+            android:layout_height="100dp"
+            android:background="@drawable/table2"
+            android:layout_toRightOf="@id/btn_about"
+            android:layout_toLeftOf="@id/btn_Settings"
+
+            />
+
+        <Button
+            android:id="@+id/btn_Settings"
+            android:layout_width="70dp"
+            android:layout_height="100dp"
+            android:layout_alignParentRight="true"
+            android:layout_marginLeft="25dp"
+            android:layout_marginRight="20dp"
+            android:background="@drawable/table3" />
+
+    </RelativeLayout>
+
+
+
+    <LinearLayout
+        android:id="@+id/Base"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        android:layout_marginLeft="25dp"
+        android:layout_marginRight="25dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="70dp"
+        app:layout_constraintTop_toTopOf="@id/iv_dust"
+        app:layout_constraintLeft_toLeftOf="@id/iv_dust"
+        app:layout_constraintRight_toRightOf="@id/iv_dust"
+        app:layout_constraintBottom_toBottomOf="@id/iv_dust"
+        >
+
+        <LinearLayout
+            android:id="@+id/LL1"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:gravity="bottom"
+
+            >
+
+            <ImageView
+
+                android:id="@+id/topleft"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:contentDescription="TODO"
+                android:scaleType="fitEnd"
+                android:src="@drawable/in"
+                tools:ignore="NestedWeights" />
+
+            <ImageView
+                android:id="@+id/topcenter"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:contentDescription="TODO"
+                android:scaleType="fitEnd"
+                android:src="@drawable/in" />
+
+            <ImageView
+                android:id="@+id/topright"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:contentDescription="TODO"
+                android:scaleType="fitEnd"
+                android:src="@drawable/in" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/LL2"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:gravity="bottom">
+
+            <ImageView
+                android:id="@+id/centerLeft"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:contentDescription="TODO"
+                android:scaleType="fitEnd"
+                android:src="@drawable/in"
+                tools:ignore="NestedWeights" />
+
+            <ImageView
+                android:id="@+id/centerCenter"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:contentDescription="TODO"
+                android:scaleType="fitEnd"
+                android:src="@drawable/in" />
+
+            <ImageView
+                android:id="@+id/centerRight"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:contentDescription="TODO"
+                android:scaleType="fitEnd"
+                android:src="@drawable/in" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/LL3"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:gravity="bottom">
+
+            <ImageView
+                android:id="@+id/bottomLeft"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:contentDescription="TODO"
+                android:scaleType="fitEnd"
+                android:src="@drawable/in"
+                tools:ignore="NestedWeights" />
+
+            <ImageView
+                android:id="@+id/bottomCenter"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:contentDescription="TODO"
+                android:scaleType="fitEnd"
+                android:src="@drawable/in" />
+
+            <ImageView
+                android:id="@+id/bottomRight"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:contentDescription="TODO"
+                android:scaleType="fitEnd"
+                android:src="@drawable/in" />
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+
+</android.support.constraint.ConstraintLayout>
